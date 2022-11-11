@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url('./b1.jpg');
+        }
+        .container{
+            background-color: #EDF5E1;
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+            flex-direction: column;
+            width: 450px;
+            height: 600px;
+            margin: auto;
+            overflow: scroll;
+            border: 2px solid black;
+        }
+
+        .todolist{
+            background-color: black;
+            color: white;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 30px;
+            width: 453px;
+            margin: auto;
+            margin-top: 40px;
+            height: 50px;
+            padding-top: 5px;
+            text-align: center;
+        }
+        .notepad{
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+
+        #notes{
+            height: 20px;
+            width: 300px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="todolist">todo List</div>
+    <div class="container">
+        
+        <div class="notepad">
+            <input type="text" id="notes" placeholder="Add note">
+            <button onclick="addNote()">+</button>
+        </div>
+        <div class="notepadData">
+        </div>
+    </div>
+
+    <script>
+        
+        // function addNote(){
+        //     var note = document.createElement('p');
+        //     var Notes = document.getElementById('notes');
+        //     var NotePad = document.querySelector('.notepad');
+            // note.textContent = Notes.value;          
+        //     NotePad.append(note);
+        // }
+
+        function addNote(){
+            var NoteValue = document.getElementById('notes');
+            var checkbox = document.createElement('input');
+            var button = document.createElement('button');
+            var linebreak = document.createElement('p');
+            button.textContent = ("-");
+            checkbox.type = 'checkbox';
+            checkbox.id = 'checkbox-id';
+            var label = document.createElement('label');
+            label.htmlFor = 'checkbox-id';
+            if(NoteValue.value.length == 0){
+                return ;
+            }
+            label.textContent = NoteValue.value;
+            button.class="close-button";
+            var NotepadData = document.querySelector('.notepadData');
+            NotepadData.append(checkbox);
+            NotepadData.append(label);
+            NotepadData.append(button);
+            NotepadData.append(linebreak);
+            NoteValue.value = ("");
+            // document.body.append(checkbox);
+            // document.body.append(label);
+            // document.body.append(button);
+            button.onclick = function(){
+                button.style.display = 'none';
+                checkbox.style.display = 'none';
+                label.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
